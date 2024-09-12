@@ -1,0 +1,19 @@
+name: Java CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Maven
+        uses: actions/setup-maven@v1
+      - name: Build and test
+        run: mvn clean package
+      - name: Deploy
+        run: mvn deploy
