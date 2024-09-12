@@ -1,0 +1,17 @@
+name: bookstore
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Maven
+        uses: actions/setup-maven@v1
+      - name: Build
+        run: mvn clean package
